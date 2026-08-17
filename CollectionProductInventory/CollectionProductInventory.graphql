@@ -1,0 +1,169 @@
+# Español 🇪🇸
+
+# QUÉ HACE A NIVEL GLOBAL:
+# Parte de una colección concreta (identificada por su ID) y baja cuatro niveles
+# de la jerarquía del catálogo hasta llegar al stock real:
+# colección -> productos -> variantes -> registro de inventario -> stock por ubicación.
+# Devuelve, para cada talla/color, cuántas unidades hay en cada almacén o tienda.
+
+query CollectionProductInventory($collectionId: ID!) {
+  # Punto de entrada: busca UNA colección por su GID.
+  # Devuelve null si el ID no existe o si la app no tiene permiso sobre ella.
+  collection(id: $collectionId) {
+    id # Identificador global (gid://shopify/Collection/...)
+    title # Nombre visible de la colección
+
+    # Conexión paginada: los 5 primeros productos de la colección.
+    # `first` es obligatorio en las conexiones de Shopify (no existe "traer todos").
+    # Admite además: sortKey, reverse, query, after/before/last.
+    # sortKey (ProductCollectionSortKeys): BEST_SELLING | COLLECTION_DEFAULT |
+    #   CREATED | ID | MANUAL | PRICE | RELEVANCE | TITLE
+    products(first: 5) {
+      # `nodes` es el atajo moderno que evita escribir edges { node { ... } }.
+      # Si necesitas cursores para paginar, usa edges { cursor node } + pageInfo.
+      nodes {
+        id
+        title
+
+        # Las 5 primeras variantes del producto (talla, color, etc.).
+        # sortKey (ProductVariantSortKeys): FULL_TITLE | ID |
+        #   INVENTORY_LEVELS_AVAILABLE | INVENTORY_MANAGEMENT | INVENTORY_POLICY |
+        #   INVENTORY_QUANTITY | NAME | POPULAR | POSITION | RELEVANCE | SKU | TITLE
+        variants(first: 5) {
+          nodes {
+            id
+            title
+
+            # Objeto que une la variante con el sistema de inventario.
+            # Una variante tiene exactamente UN InventoryItem.
+            inventoryItem {
+              id
+
+              # Hasta 10 ubicaciones donde ese artículo está dado de alta.
+              # Un InventoryLevel es la intersección "un artículo x una ubicación".
+              inventoryLevels(first: 10) {
+                nodes {
+                  id
+
+                  # A qué almacén o tienda corresponde este nivel de inventario.
+                  location {
+                    id
+                    name
+                  }
+
+                  # Estados de inventario que quieres leer. Devuelve pares nombre/cantidad.
+                  # `names` son String (no un enum): un nombre mal escrito da error de API.
+                  # VALORES ADMITIDOS (los 8, se pueden pedir todos a la vez):
+                  #   available       -> disponible para vender
+                  #   incoming        -> en camino desde proveedor o transferencia
+                  #   committed       -> comprometido en pedidos pendientes de preparar
+                  #   reserved        -> apartado (borradores de pedido, checkouts)
+                  #   damaged         -> dañado
+                  #   safety_stock    -> stock de seguridad
+                  #   quality_control -> en control de calidad
+                  #   on_hand         -> físico total = available + committed + reserved
+                  #                      + damaged + safety_stock + quality_control
+                  # Ejemplo: quantities(names: ["available", "on_hand", "committed"])
+                  # Requiere el scope read_inventory.
+                  quantities(names: ["available"]) {
+                    name
+                    quantity
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+# NOTA DE COSTE: el anidamiento multiplica el coste de la query (5 x 5 x 10).
+# `first` admite hasta 250, pero subirlo en varios niveles provoca THROTTLED.
+
+# ---
+
+# English 🏴󠁧󠁢󠁥󠁮󠁧󠁿
+
+# WHAT IT DOES AT A GLOBAL LEVEL:
+# Starts from a specific collection (identified by its ID) and walks four levels
+# down the catalog hierarchy until it reaches the actual stock:
+# collection -> products -> variants -> inventory record -> stock per location.
+# Returns, for each size/color, how many units are in each warehouse or store.
+
+query CollectionProductInventory($collectionId: ID!) {
+  # Entry point: looks up ONE collection by its GID.
+  # Returns null if the ID doesn't exist or the app has no permission over it.
+  collection(id: $collectionId) {
+    id # Global identifier (gid://shopify/Collection/...)
+    title # Display name of the collection
+
+    # Paginated connection: the first 5 products in the collection.
+    # `first` is mandatory on Shopify connections (there is no "fetch them all").
+    # It also accepts: sortKey, reverse, query, after/before/last.
+    # sortKey (ProductCollectionSortKeys): BEST_SELLING | COLLECTION_DEFAULT |
+    #   CREATED | ID | MANUAL | PRICE | RELEVANCE | TITLE
+    products(first: 5) {
+      # `nodes` is the modern shortcut that avoids writing edges { node { ... } }.
+      # If you need cursors for pagination, use edges { cursor node } + pageInfo.
+      nodes {
+        id
+        title
+
+        # The first 5 variants of the product (size, color, etc.).
+        # sortKey (ProductVariantSortKeys): FULL_TITLE | ID |
+        #   INVENTORY_LEVELS_AVAILABLE | INVENTORY_MANAGEMENT | INVENTORY_POLICY |
+        #   INVENTORY_QUANTITY | NAME | POPULAR | POSITION | RELEVANCE | SKU | TITLE
+        variants(first: 5) {
+          nodes {
+            id
+            title
+
+            # Object that links the variant to the inventory system.
+            # A variant has exactly ONE InventoryItem.
+            inventoryItem {
+              id
+
+              # Up to 10 locations where that item is stocked.
+              # An InventoryLevel is the intersection "one item x one location".
+              inventoryLevels(first: 10) {
+                nodes {
+                  id
+
+                  # Which warehouse or store this inventory level belongs to.
+                  location {
+                    id
+                    name
+                  }
+
+                  # Inventory states you want to read. Returns name/quantity pairs.
+                  # `names` are Strings (not an enum): a misspelled name is an API error.
+                  # ALLOWED VALUES (all 8, and you can request them all at once):
+                  #   available       -> available to sell
+                  #   incoming        -> on its way from a supplier or transfer
+                  #   committed       -> committed to orders not yet prepared
+                  #   reserved        -> set aside (draft orders, checkouts)
+                  #   damaged         -> damaged
+                  #   safety_stock    -> safety stock
+                  #   quality_control -> in quality control
+                  #   on_hand         -> total physical = available + committed + reserved
+                  #                      + damaged + safety_stock + quality_control
+                  # Example: quantities(names: ["available", "on_hand", "committed"])
+                  # Requires the read_inventory scope.
+                  quantities(names: ["available"]) {
+                    name
+                    quantity
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+# COST NOTE: nesting multiplies the cost of the query (5 x 5 x 10).
+# `first` accepts up to 250, but raising it across several levels causes THROTTLED.
