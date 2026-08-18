@@ -1,0 +1,46 @@
+{
+    "data": {
+        "collection": {
+            "id": "gid://shopify/Collection/{Collection-id}",
+            "title": "COLLECTION NAME",
+            "products": {
+                "nodes": [
+                    {
+                        "id": "gid://shopify/Product/{Product-id}",
+                        "title": "PRODUCT NAME",
+                        "variants": {
+                            "nodes": [
+                                {
+                                    "id": "gid://shopify/ProductVariant/{ProductVariant-id}",
+                                    "title": "s",
+                                    "inventoryItem": {
+                                        "id": "gid://shopify/InventoryItem/{InventoryItem-id}",
+                                        "inventoryLevels": {
+                                            "nodes": [
+                                                {
+                                                    "id": "gid://shopify/InventoryLevel/{InventoryLevel-id}?inventory_item_id={InventoryItem-id}",
+                                                    "location": {
+                                                        "id": "gid://shopify/Location/{Locations-id}",
+                                                        "name": "Shop location"
+                                                    },
+                                                    "quantities": [
+                                                        {
+                                                            "name": "available",
+                                                            "quantity": 5000
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    }
+                                },
+                                // resto de variantes...
+                            ]
+                        }
+                    }
+                    // resto de productos...
+                ]
+            }
+        }
+    }
+}
