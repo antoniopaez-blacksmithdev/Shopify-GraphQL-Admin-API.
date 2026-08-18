@@ -2,7 +2,7 @@
 
 ## Español 🇪🇸
 
-Las roturas o las pérdidas de stock son uno de los mayores problemas de las tiendas y donde mas dinero se pierde en la mayoría de los casos. Con la query CollectionProductInventory podrás tener control en tiempo real de todo el stock de tu tienda.
+Las roturas o las pérdidas de stock son uno de los mayores problemas de las tiendas y donde mas dinero se pierde en la mayoría de los casos. Con la query **CollectionProductInventory** podrás tener control en tiempo real de todo el stock de tu tienda.
 
 * **Connection: Collection** — agrupa productos para organizarlos y mostrarlos juntos.
 * **Object: Product** — representa un bien o servicio de la tienda.

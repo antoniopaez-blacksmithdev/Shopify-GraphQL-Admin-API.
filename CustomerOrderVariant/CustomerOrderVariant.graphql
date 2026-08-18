@@ -1,0 +1,111 @@
+# Español 🇪🇸
+
+# QUÉ HACE A NIVEL GLOBAL:
+# Dado un cliente, recupera sus pedidos y, dentro de cada pedido, desglosa las
+# líneas de compra hasta identificar qué variante se compró y a qué producto
+# pertenece. Responde a: "¿qué le he vendido a este cliente, en qué talla/color
+# y cuántas unidades?".
+
+query CustomerOrderVariant($customerId: ID!) {
+  # Carga un cliente por su GID. Requiere el scope read_customers.
+  customer(id: $customerId) {
+    id
+    displayName # Nombre ya formateado (firstName/lastName pueden venir vacíos)
+
+    # Los 5 pedidos del cliente.
+    # Admite además: sortKey, reverse, query, after/before/last.
+    # sortKey (OrderSortKeys): CREATED_AT | CURRENT_TOTAL_PRICE | CUSTOMER_NAME |
+    #   DESTINATION | FINANCIAL_STATUS | FULFILLMENT_STATUS | ID | ORDER_NUMBER |
+    #   PO_NUMBER | PROCESSED_AT | RELEVANCE | TOTAL_ITEMS_QUANTITY |
+    #   TOTAL_PRICE | UPDATED_AT
+    # Para "los 5 últimos": orders(first: 5, sortKey: CREATED_AT, reverse: true)
+    # `query` acepta la sintaxis de búsqueda de Shopify, p. ej.:
+    #   query: "financial_status:paid created_at:>2026-01-01"
+    # RELEVANCE solo tiene sentido si además pasas `query`.
+    orders(first: 5) {
+      nodes {
+        id
+        name # Número visible del pedido (#1001), no un título
+
+        # Las líneas del pedido: una por producto comprado.
+        lineItems(first: 5) {
+          nodes {
+            id
+            quantity # Unidades VENDIDAS en esta línea (no es stock)
+
+            # Variante concreta comprada.
+            # OJO: puede ser null si la variante se eliminó tras la compra;
+            # el LineItem conserva entonces solo su nombre como texto histórico.
+            variant {
+              id
+              title
+
+              # Producto padre de la variante. También anulable por lo mismo.
+              product {
+                id
+                title
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+# ---
+
+# English 🏴󠁧󠁢󠁥󠁮󠁧󠁿
+
+# WHAT IT DOES AT A GLOBAL LEVEL:
+# Given a customer, it retrieves their orders and, within each order, breaks down
+# the purchase lines until it identifies which variant was bought and which
+# product it belongs to. Answers: "what have I sold to this customer, in which
+# size/color and how many units?".
+
+query CustomerOrderVariant($customerId: ID!) {
+  # Loads a customer by their GID. Requires the read_customers scope.
+  customer(id: $customerId) {
+    id
+    displayName # Already-formatted name (firstName/lastName may come back empty)
+
+    # The customer's 5 orders.
+    # It also accepts: sortKey, reverse, query, after/before/last.
+    # sortKey (OrderSortKeys): CREATED_AT | CURRENT_TOTAL_PRICE | CUSTOMER_NAME |
+    #   DESTINATION | FINANCIAL_STATUS | FULFILLMENT_STATUS | ID | ORDER_NUMBER |
+    #   PO_NUMBER | PROCESSED_AT | RELEVANCE | TOTAL_ITEMS_QUANTITY |
+    #   TOTAL_PRICE | UPDATED_AT
+    # For "the latest 5": orders(first: 5, sortKey: CREATED_AT, reverse: true)
+    # `query` accepts Shopify's search syntax, e.g.:
+    #   query: "financial_status:paid created_at:>2026-01-01"
+    # RELEVANCE only makes sense if you also pass `query`.
+    orders(first: 5) {
+      nodes {
+        id
+        name # Display order number (#1001), not a title
+
+        # The order's lines: one per purchased product.
+        lineItems(first: 5) {
+          nodes {
+            id
+            quantity # Units SOLD on this line (this is not stock)
+
+            # The specific variant that was purchased.
+            # WATCH OUT: it can be null if the variant was deleted after the purchase;
+            # the LineItem then keeps only its name as historical text.
+            variant {
+              id
+              title
+
+              # Parent product of the variant. Also nullable for the same reason.
+              product {
+                id
+                title
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+    "data": {
+        "customer": {
+            "id": "gid://shopify/Customer/{Customer-id}",
+            "displayName": "Antonio Páez Gómez",
+            "orders": {
+                "nodes": [
+                    {
+                        "id": "gid://shopify/Order/{Order-id}",
+                        "name": "#1001",
+                        "lineItems": {
+                            "nodes": [
+                                {
+                                    "id": "gid://shopify/LineItem/{LineItem-id}",
+                                    "quantity": 1,
+                                    "variant": {
+                                        "id": "gid://shopify/ProductVariant/{ProductVariant-id}",
+                                        "title": "Default Title",
+                                        "product": {
+                                            "id": "gid://shopify/Product/{Product-id}",
+                                            "title": "The Collection Snowboard: Liquid"
+                                        }
+                                    }
+                                }
+                                // resto de líneas...
+                            ]
+                        }
+                    }
+                    // resto de pedidos...
+                ]
+            }
+        }
+    }
+}
