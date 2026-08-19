@@ -1,0 +1,33 @@
+{
+    "data": {
+        "order": {
+            "id": "gid://shopify/Order/{Order-id}",
+            "name": "#1234",
+            "fulfillmentOrders": {
+                "nodes": [
+                    {
+                        "id": "gid://shopify/FulfillmentOrder/{FulfillmentOrder-id}",
+                        "status": "OPEN",
+                        "lineItems": {
+                            "nodes": [
+                                {
+                                    "id": "gid://shopify/FulfillmentOrderLineItem/{FulfillmentOrderLineItem-id}",
+                                    "remainingQuantity": 1,
+                                    "lineItem": {
+                                        "id": "gid://shopify/LineItem/{LineItem-id}",
+                                        "name": "PRODUCT NAME",
+                                        "variant": {
+                                            "id": "gid://shopify/ProductVariant/{ProductVariant-id}",
+                                            "title": "Default Title"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                    // resto de fulfillmentOrders...
+                ]
+            }
+        }
+    }
+}

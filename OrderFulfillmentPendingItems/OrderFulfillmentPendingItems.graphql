@@ -1,0 +1,137 @@
+# Español 🇪🇸
+
+# QUÉ HACE A NIVEL GLOBAL:
+# Sobre un pedido concreto, lista sus órdenes de fulfillment (el trabajo de
+# preparación/envío que Shopify genera automáticamente, agrupado por ubicación
+# de origen) y, dentro de cada una, qué unidades siguen sin enviarse.
+# Responde a: "¿qué queda por preparar de este pedido y desde dónde?".
+# CONCEPTO CLAVE: FulfillmentOrder = trabajo previsto.
+#                 Fulfillment      = envío ya realizado. Son objetos distintos.
+
+query OrderFulfillmentPendingItems($orderId: ID!) {
+  # Carga el pedido por su GID.
+  order(id: $orderId) {
+    id
+    name # Número visible del pedido (#1001)
+
+    # Órdenes de fulfillment del pedido. Un mismo pedido genera VARIAS si los
+    # artículos salen de ubicaciones distintas o los gestionan servicios de
+    # fulfillment diferentes. No se crean a mano: las genera Shopify.
+    # Admite además: includeClosed (Boolean, por defecto false), query,
+    # after/before/first/last.
+    # IMPORTANTE: con el valor por defecto NO se devuelven las órdenes ya
+    # cerradas. Para el histórico completo usa includeClosed: true.
+    fulfillmentOrders(first: 5) {
+      nodes {
+        id
+
+        # Estado del trabajo de fulfillment (enum FulfillmentOrderStatus,
+        # es de salida: se lee, no se pasa como argumento).
+        # VALORES POSIBLES:
+        #   OPEN        -> listo para preparar
+        #   IN_PROGRESS -> en proceso
+        #   SCHEDULED   -> diferido, estará listo tras la fecha de fulfillAt
+        #   ON_HOLD     -> retenido, no se puede iniciar hasta liberar la retención
+        #   INCOMPLETE  -> no se puede completar tal como se pidió
+        #   CLOSED      -> completado y cerrado
+        #   CANCELLED   -> cancelado por el comerciante
+        status
+
+        # OJO: aquí son FulfillmentOrderLineItem, NO los LineItem del pedido.
+        # Representan el trabajo pendiente, no la venta.
+        lineItems(first: 5) {
+          nodes {
+            id
+
+            # Campo clave: unidades de esta línea que todavía NO se han enviado
+            # ni cancelado. Si vale 0, la línea ya está resuelta.
+            remainingQuantity
+
+            # Enlace de vuelta a la línea original del pedido, que conserva el
+            # nombre comercial tal y como se vendió.
+            lineItem {
+              id
+              name
+
+              # Variante asociada. Anulable si el producto ya no existe.
+              variant {
+                id
+                title
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+# ---
+
+# English 🏴󠁧󠁢󠁥󠁮󠁧󠁿
+
+# WHAT IT DOES AT A GLOBAL LEVEL:
+# For a specific order, it lists its fulfillment orders (the preparation/shipping
+# work that Shopify generates automatically, grouped by origin location) and,
+# within each one, which units are still unshipped.
+# Answers: "what is left to prepare on this order, and from where?".
+# KEY CONCEPT: FulfillmentOrder = the planned work.
+#              Fulfillment      = the shipment already made. They are distinct objects.
+
+query OrderFulfillmentPendingItems($orderId: ID!) {
+  # Loads the order by its GID.
+  order(id: $orderId) {
+    id
+    name # Display order number (#1001)
+
+    # The order's fulfillment orders. A single order generates SEVERAL if the
+    # items ship from different locations or are handled by different fulfillment
+    # services. They aren't created by hand: Shopify generates them.
+    # It also accepts: includeClosed (Boolean, false by default), query,
+    # after/before/first/last.
+    # IMPORTANT: with the default value, already-closed fulfillment orders are NOT
+    # returned. For the full history use includeClosed: true.
+    fulfillmentOrders(first: 5) {
+      nodes {
+        id
+
+        # Status of the fulfillment work (FulfillmentOrderStatus enum,
+        # it is an output value: you read it, you don't pass it as an argument).
+        # POSSIBLE VALUES:
+        #   OPEN        -> ready to be prepared
+        #   IN_PROGRESS -> being processed
+        #   SCHEDULED   -> deferred, ready after the fulfillAt date
+        #   ON_HOLD     -> on hold, can't start until the hold is released
+        #   INCOMPLETE  -> can't be completed as requested
+        #   CLOSED      -> completed and closed
+        #   CANCELLED   -> cancelled by the merchant
+        status
+
+        # WATCH OUT: these are FulfillmentOrderLineItem, NOT the order's LineItem.
+        # They represent the pending work, not the sale.
+        lineItems(first: 5) {
+          nodes {
+            id
+
+            # Key field: units on this line that have NOT yet been shipped
+            # or cancelled. If it is 0, the line is already resolved.
+            remainingQuantity
+
+            # Link back to the original order line, which keeps the commercial
+            # name exactly as it was sold.
+            lineItem {
+              id
+              name
+
+              # Associated variant. Nullable if the product no longer exists.
+              variant {
+                id
+                title
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
