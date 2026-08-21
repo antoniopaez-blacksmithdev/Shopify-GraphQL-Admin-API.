@@ -1,0 +1,28 @@
+{
+    "data": {
+        "publication": {
+            "id": "gid://shopify/Publication/{Publication-id}",
+            "products": {
+                "nodes": [
+                    {
+                        "id": "gid://shopify/Product/{Product-id}",
+                        "title": "The Inventory Not Tracked Snowboard",
+                        "variants": {
+                            "nodes": [
+                                {
+                                    "id": "gid://shopify/ProductVariant/{ProductVariant-id}",
+                                    "title": "Default Title",
+                                    "inventoryItem": {
+                                        "id": "gid://shopify/InventoryItem/{InventoryItem-id}"
+                                    }
+                                }
+                                // resto de variantes...
+                            ]
+                        }
+                    }
+                    // resto de productos...
+                ]
+            }
+        }
+    }
+}

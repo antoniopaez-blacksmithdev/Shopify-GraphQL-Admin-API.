@@ -1,0 +1,102 @@
+# Español 🇪🇸
+
+# QUÉ HACE A NIVEL GLOBAL:
+# Consulta un canal de venta / publicación (Online Store, Point of Sale, un
+# marketplace, un catálogo B2B...) y lista qué productos están publicados en él,
+# con sus variantes y el identificador de inventario de cada una.
+# Responde a: "¿qué catálogo ve realmente este canal?".
+
+query PublicationProductVariants($publicationId: ID!) {
+  # Carga la publicación por su GID. Una publicación es el vínculo entre la
+  # tienda y un canal o catálogo concreto.
+  # OJO: el ID de publicación NO es el de canal
+  # (gid://shopify/Publication/... vs gid://shopify/Channel/...);
+  # pasar el segundo devuelve null.
+  publication(id: $publicationId) {
+    id
+
+    # Solo los productos ASOCIADOS a esta publicación: es el filtro implícito
+    # de toda la query. El mismo producto puede estar en un canal y no en otro.
+    products(first: 5) {
+      nodes {
+        id
+        title
+
+        # Variantes de cada producto publicado.
+        # sortKey (ProductVariantSortKeys): FULL_TITLE | ID |
+        #   INVENTORY_LEVELS_AVAILABLE | INVENTORY_MANAGEMENT | INVENTORY_POLICY |
+        #   INVENTORY_QUANTITY | NAME | POPULAR | POSITION | RELEVANCE | SKU | TITLE
+        variants(first: 5) {
+          nodes {
+            id
+            title
+
+            # Aquí solo se pide el ID, sin bajar a inventoryLevels: identifica el
+            # registro de inventario para cruzarlo después con otra query o con un
+            # sistema externo, sin pagar el coste de recorrer ubicaciones.
+            inventoryItem {
+              id
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+# MATIZ: publicado != visible. Un producto puede estar en la publicación pero con
+# status DRAFT o con fecha de publicación futura. Para el estado real:
+# Product.publishedOnPublication(publicationId:) o Product.resourcePublications.
+
+# ---
+
+# English 🏴󠁧󠁢󠁥󠁮󠁧󠁿
+
+# WHAT IT DOES AT A GLOBAL LEVEL:
+# Queries a sales channel / publication (Online Store, Point of Sale, a
+# marketplace, a B2B catalog...) and lists which products are published on it,
+# along with their variants and the inventory identifier of each one.
+# Answers: "what catalog does this channel actually see?".
+
+query PublicationProductVariants($publicationId: ID!) {
+  # Loads the publication by its GID. A publication is the link between the
+  # store and a specific channel or catalog.
+  # WATCH OUT: the publication ID is NOT the channel ID
+  # (gid://shopify/Publication/... vs gid://shopify/Channel/...);
+  # passing the latter returns null.
+  publication(id: $publicationId) {
+    id
+
+    # Only the products ASSOCIATED with this publication: it is the implicit
+    # filter of the whole query. The same product may be on one channel and not another.
+    products(first: 5) {
+      nodes {
+        id
+        title
+
+        # Variants of each published product.
+        # sortKey (ProductVariantSortKeys): FULL_TITLE | ID |
+        #   INVENTORY_LEVELS_AVAILABLE | INVENTORY_MANAGEMENT | INVENTORY_POLICY |
+        #   INVENTORY_QUANTITY | NAME | POPULAR | POSITION | RELEVANCE | SKU | TITLE
+        variants(first: 5) {
+          nodes {
+            id
+            title
+
+            # Here only the ID is requested, without going down to inventoryLevels:
+            # it identifies the inventory record so you can cross-reference it later
+            # with another query or an external system, without paying the cost of
+            # walking through locations.
+            inventoryItem {
+              id
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+# NUANCE: published != visible. A product can be in the publication but with
+# status DRAFT or with a future publication date. For the real status:
+# Product.publishedOnPublication(publicationId:) or Product.resourcePublications.
