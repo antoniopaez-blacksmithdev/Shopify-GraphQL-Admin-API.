@@ -23,3 +23,9 @@ Having products ready on time to meet dispatch deadlines is essential if you wan
 - **Field: ProductVariant** — identifies the related variant.
 - **Scopes:** `read_orders`, `read_marketplace_orders`, `read_quick_sale`, `read_assigned_fulfillment_orders`, `read_merchant_managed_fulfillment_orders`, `read_third_party_fulfillment_orders`, `read_marketplace_fulfillment_orders`, `read_products`.
 * **URL of the selected object:** [FulfillmentOrder](https://shopify.dev/docs/api/admin-graphql/2026-04/objects/FulfillmentOrder)
+
+## Sigueme / Follow me
+
+Instagram: **antoniopaez_blacksmithdev**
+BlueSky: **@apaez-blacksmith.bsky.social**
+X: **@apaezblacksmith**

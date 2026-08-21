@@ -23,3 +23,9 @@ Stock shortages or losses are one of the biggest problems for shops and, in most
 * **Connection: InventoryLevel** — shows the stock level of the item at a specific location.
 * **Scopes:** `read_products`, `read_inventory`, `read_locations`, `read_markets_home`.
 * **URL of the selected object:** [Product](https://shopify.dev/docs/api/admin-graphql/2026-04/objects/Product)
+
+## Sigueme / Follow me
+
+Instagram: **antoniopaez_blacksmithdev**
+BlueSky: **@apaez-blacksmith.bsky.social**
+X: **@apaezblacksmith**

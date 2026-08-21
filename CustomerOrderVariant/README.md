@@ -23,3 +23,9 @@ Having a record of what the customer has purchased and the associated orders is 
 - **Field: Product** — identifies the product to which the variant belongs.
 * **Scopes:** `read_customers`, `read_orders`, `read_marketplace_orders`, `read_quick_sale`, `read_products`.
 * **URL of the selected object:** [Order](https://shopify.dev/docs/api/admin-graphql/2026-04/objects/Order)
+
+## Sigueme / Follow me
+
+Instagram: **antoniopaez_blacksmithdev**
+BlueSky: **@apaez-blacksmith.bsky.social**
+X: **@apaezblacksmith**

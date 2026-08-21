@@ -11,3 +11,9 @@ Espero que pueda ayudarte.
 As a Shopify app developer, knowing and understanding the various APIs is essential, especially if you need to extend the shop’s functionality. So I’ve created this repository to upload the tools I develop in my day-to-day work on personal projects.
 
 I hope you find it useful.
+
+## Sigueme / Follow me
+
+Instagram: **antoniopaez_blacksmithdev**
+BlueSky: **@apaez-blacksmith.bsky.social**
+X: **@apaezblacksmith**
