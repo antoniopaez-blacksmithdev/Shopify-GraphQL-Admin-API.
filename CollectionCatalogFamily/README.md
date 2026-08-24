@@ -4,7 +4,7 @@
 
 Cómo explorar las variantes agrupadas dentro de una colección para analizar la estructura de catálogo de una colección sin centrarse en cantidades de inventario.
 
-Uno de los problemas que mas veo en las tiendas es la creación de colecciones sin orden ni jerarquía y luego tener variantes de productos repartidas en varios catálogos y eso genera problemas con precios, descuentos, etc... Con la query CollectionCatalogFamily podrás gestionar las variantes asociadas a las colecciones y corregir muchos de los problemas que te encuentras a la hora de realizar cambios en las colecciones.
+Uno de los problemas que mas veo en las tiendas es la creación de colecciones sin orden ni jerarquía y luego tener variantes de productos repartidas en varios catálogos y eso genera problemas con precios, descuentos, etc... Con la query **CollectionCatalogFamily** podrás gestionar las variantes asociadas a las colecciones y corregir muchos de los problemas que te encuentras a la hora de realizar cambios en las colecciones.
 
 * **Connection: QueryRoot** — punto de entrada de una consulta GraphQL.
 * **Object: Collection** — agrupa productos para facilitar su organización y presentación.
