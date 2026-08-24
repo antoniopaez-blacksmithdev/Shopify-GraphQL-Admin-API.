@@ -1,0 +1,105 @@
+# Español 🇪🇸
+
+# QUÉ HACE A NIVEL GLOBAL:
+# Única query de la serie sin parámetros. Ataca la conexión raíz `collections` y
+# devuelve un mapa de estructura del catálogo: las 5 primeras colecciones, sus
+# productos, las variantes de cada producto y el ID de inventario de cada una.
+# No mira cantidades: sirve para entender CÓMO está organizado el catálogo,
+# no cuánto stock hay.
+
+query CollectionCatalogFamily {
+  # Entrada por la raíz (QueryRoot), sin ID: devuelve colecciones de la tienda
+  # en lugar de una concreta. Por eso el bloque de parámetros es {}.
+  # Admite además: sortKey, reverse, query, savedSearchId, after/before/last.
+  # sortKey (CollectionSortKeys) solo acepta 4 valores:
+  #   ID | RELEVANCE | TITLE | UPDATED_AT   (aquí NO existe CREATED_AT)
+  # `query` permite filtrar, p. ej.:
+  #   query: "collection_type:smart"  o  query: "title:Rebajas*"
+  collections(first: 5) {
+    nodes {
+      id
+      title
+
+      # Mismo descenso jerárquico que el Día 1, pero cortando antes de
+      # inventoryLevels: estructura del catálogo, sin cantidades.
+      # sortKey (ProductCollectionSortKeys): BEST_SELLING | COLLECTION_DEFAULT |
+      #   CREATED | ID | MANUAL | PRICE | RELEVANCE | TITLE
+      products(first: 5) {
+        nodes {
+          id
+          title
+
+          variants(first: 5) {
+            nodes {
+              id
+              title
+
+              # Solo el ID del registro de inventario asociado a la variante.
+              inventoryItem {
+                id
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+# NOTA DE COSTE: es la query con más riesgo de la serie (5 x 5 x 5 nodos anidados).
+# Subir los `first` a 50 en cada nivel dispara el coste calculado y provoca
+# THROTTLED aunque el volumen de datos real sea pequeño.
+
+# ---
+
+# English 🏴󠁧󠁢󠁥󠁮󠁧󠁿
+
+# WHAT IT DOES AT A GLOBAL LEVEL:
+# The only query in the series without parameters. It hits the `collections` root
+# connection and returns a map of the catalog structure: the first 5 collections,
+# their products, the variants of each product and the inventory ID of each one.
+# It doesn't look at quantities: it is meant to show HOW the catalog is organized,
+# not how much stock there is.
+
+query CollectionCatalogFamily {
+  # Entry through the root (QueryRoot), without an ID: it returns the store's
+  # collections instead of a specific one. That's why the variables block is {}.
+  # It also accepts: sortKey, reverse, query, savedSearchId, after/before/last.
+  # sortKey (CollectionSortKeys) accepts only 4 values:
+  #   ID | RELEVANCE | TITLE | UPDATED_AT   (CREATED_AT does NOT exist here)
+  # `query` allows filtering, e.g.:
+  #   query: "collection_type:smart"  or  query: "title:Sale*"
+  collections(first: 5) {
+    nodes {
+      id
+      title
+
+      # Same hierarchical descent as Day 1, but stopping before
+      # inventoryLevels: catalog structure, without quantities.
+      # sortKey (ProductCollectionSortKeys): BEST_SELLING | COLLECTION_DEFAULT |
+      #   CREATED | ID | MANUAL | PRICE | RELEVANCE | TITLE
+      products(first: 5) {
+        nodes {
+          id
+          title
+
+          variants(first: 5) {
+            nodes {
+              id
+              title
+
+              # Only the ID of the inventory record associated with the variant.
+              inventoryItem {
+                id
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+# COST NOTE: this is the riskiest query in the series (5 x 5 x 5 nested nodes).
+# Raising the `first` values to 50 at each level blows up the calculated cost and
+# causes THROTTLED even though the actual data volume is small.
