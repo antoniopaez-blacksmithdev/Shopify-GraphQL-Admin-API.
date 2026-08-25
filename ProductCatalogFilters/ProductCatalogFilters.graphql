@@ -1,0 +1,53 @@
+# Español 🇪🇸
+
+# QUÉ HACE A NIVEL GLOBAL:
+# Busca hasta cinco productos usando la expresión recibida en $query.
+# Para cada coincidencia devuelve identidad, título, proveedor, tipo y estado.
+# La consulta es de solo lectura y no modifica ningún producto.
+
+query ProductCatalogFilters($query: String!) {
+  # Punto de entrada de QueryRoot para buscar productos de la tienda.
+  products(first: 5, query: $query) {
+    # `nodes` contiene directamente los productos encontrados.
+    nodes {
+      # Identificador global con formato gid://shopify/Product/...
+      id
+      # Título visible del producto en el catálogo.
+      title
+      # Proveedor o marca asociada al producto.
+      vendor
+      # Tipo de producto definido para clasificarlo.
+      productType
+      # Estado del producto, por ejemplo ACTIVE, DRAFT o ARCHIVED.
+      status
+    }
+  }
+}
+
+# ---
+
+# English 🏴󠁧󠁢󠁥󠁮󠁧󠁿
+
+# WHAT IT DOES AT A GLOBAL LEVEL:
+# Searches for up to five products using the expression supplied in $query.
+# For each match, it returns identity, title, vendor, type, and status.
+# The query is read-only and does not modify any product.
+
+query ProductCatalogFilters($query: String!) {
+  # QueryRoot entry point for searching the shop’s products.
+  products(first: 5, query: $query) {
+    # `nodes` directly contains the products that were found.
+    nodes {
+      # Global identifier in the gid://shopify/Product/... format.
+      id
+      # Product title displayed in the catalog.
+      title
+      # Vendor or brand associated with the product.
+      vendor
+      # Product type used for classification.
+      productType
+      # Product status, such as ACTIVE, DRAFT, or ARCHIVED.
+      status
+    }
+  }
+}

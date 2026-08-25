@@ -26,6 +26,6 @@ Having products ready on time to meet dispatch deadlines is essential if you wan
 
 ## Sigueme / Follow me
 
-Instagram: **antoniopaez_blacksmithdev**
-BlueSky: **@apaez-blacksmith.bsky.social**
-X: **@apaezblacksmith**
+* Instagram: **antoniopaez_blacksmithdev**
+* BlueSky: **@apaez-blacksmith.bsky.social**
+* X: **@apaezblacksmith**

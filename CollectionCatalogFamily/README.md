@@ -34,6 +34,6 @@ With the **CollectionCatalogFamily** query, you can manage the variants associat
 
 ## Sigueme / Follow me
 
-Instagram: **antoniopaez_blacksmithdev**
-BlueSky: **@apaez-blacksmith.bsky.social**
-X: **@apaezblacksmith**
+* Instagram: **antoniopaez_blacksmithdev**
+* BlueSky: **@apaez-blacksmith.bsky.social**
+* X: **@apaezblacksmith**

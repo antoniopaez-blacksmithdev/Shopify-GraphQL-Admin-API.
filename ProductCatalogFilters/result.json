@@ -1,0 +1,14 @@
+"data": {
+    "products": {
+        "nodes": [
+            {
+                "id": "gid://shopify/Product/{PRODUCT-ID}",
+                "title": "PRODUCT NAME",
+                "vendor": "ironforgecode",
+                "productType": "",
+                "status": "ACTIVE"
+            }
+            // resto de productos si hay mas...
+        ]
+    }
+}

@@ -14,6 +14,6 @@ I hope you find it useful.
 
 ## Sigueme / Follow me
 
-Instagram: **antoniopaez_blacksmithdev**
-BlueSky: **@apaez-blacksmith.bsky.social**
-X: **@apaezblacksmith**
+* Instagram: **antoniopaez_blacksmithdev**
+* BlueSky: **@apaez-blacksmith.bsky.social**
+* X: **@apaezblacksmith**

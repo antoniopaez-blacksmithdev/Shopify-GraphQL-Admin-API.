@@ -26,6 +26,6 @@ Knowing what you have and where it is is essential, particularly in shops that m
 
 ## Sigueme / Follow me
 
-Instagram: **antoniopaez_blacksmithdev**
-BlueSky: **@apaez-blacksmith.bsky.social**
-X: **@apaezblacksmith**
+* Instagram: **antoniopaez_blacksmithdev**
+* BlueSky: **@apaez-blacksmith.bsky.social**
+* X: **@apaezblacksmith**

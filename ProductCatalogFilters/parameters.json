@@ -1,0 +1,3 @@
+{
+    "query": "status:active vendor:{VENDOR-NAME}"
+}
