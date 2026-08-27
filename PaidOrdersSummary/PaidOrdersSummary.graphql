@@ -1,0 +1,87 @@
+# Español 🇪🇸
+
+# QUÉ HACE A NIVEL GLOBAL:
+# Busca hasta cinco pedidos que coincidan con $query.
+# Devuelve datos operativos, el estado financiero, el total en moneda de la tienda
+# y la identidad visible del cliente asociado cuando el pedido tiene uno.
+
+query PaidOrdersSummary($query: String!) {
+  # Punto de entrada de QueryRoot para buscar pedidos.
+  orders(first: 5, query: $query) {
+    # `nodes` contiene directamente los pedidos encontrados.
+    nodes {
+      # Identificador global con formato gid://shopify/Order/...
+      id
+      # Nombre legible del pedido, por ejemplo #1001.
+      name
+      # Fecha y hora de creación del pedido en formato ISO 8601.
+      createdAt
+      # Estado financiero agregado mostrado al comerciante.
+      displayFinancialStatus
+      # Bolsa de importes que puede contener valores en distintas monedas.
+      totalPriceSet {
+        # Importe expresado en la moneda principal de la tienda.
+        shopMoney {
+          # Valor decimal serializado como String por GraphQL.
+          amount
+          # Código ISO 4217 de la moneda, por ejemplo USD o EUR.
+          currencyCode
+        }
+      }
+      # Cliente asociado; puede ser null en pedidos sin cliente registrado.
+      customer {
+        # Identificador global del cliente.
+        id
+        # Nombre que Shopify muestra para el cliente.
+        displayName
+      }
+    }
+  }
+}
+
+# Sustituye `query` por una expresión válida de búsqueda de pedidos. El argumento `first: 5` limita la respuesta y no implica que se recuperen todos los pedidos coincidentes.
+
+# ---
+
+# English 🏴󠁧󠁢󠁥󠁮󠁧󠁿
+
+# WHAT IT DOES AT A GLOBAL LEVEL:
+# Searches for up to five orders matching $query.
+# Returns operational data, financial status, the shop-currency total,
+# and the associated customer’s visible identity when the order has one.
+
+query PaidOrdersSummary($query: String!) {
+  # QueryRoot entry point for searching orders.
+  orders(first: 5, query: $query) {
+    # `nodes` directly contains the orders that were found.
+    nodes {
+      # Global identifier in the gid://shopify/Order/... format.
+      id
+      # Human-readable order name, such as #1001.
+      name
+      # Order creation date and time in ISO 8601 format.
+      createdAt
+      # Aggregated financial status displayed to the merchant.
+      displayFinancialStatus
+      # Money bag that can contain values in different currencies.
+      totalPriceSet {
+        # Amount expressed in the shop’s primary currency.
+        shopMoney {
+          # Decimal value serialized as a String by GraphQL.
+          amount
+          # ISO 4217 currency code, such as USD or EUR.
+          currencyCode
+        }
+      }
+      # Associated customer; it can be null for orders without a registered customer.
+      customer {
+        # Customer global identifier.
+        id
+        # Name Shopify displays for the customer.
+        displayName
+      }
+    }
+  }
+}
+
+# Replace `query` with a valid order search expression. The `first: 5` argument limits the response and does not mean that all matching orders are retrieved.

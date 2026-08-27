@@ -1,0 +1,25 @@
+{
+    "data": {
+        "orders": {
+            "nodes": [
+                {
+                    "id": "gid://shopify/Order/{ORDER-ID}",
+                    "name": "#1003",
+                    "createdAt": "2026-07-05T18:32:12Z",
+                    "displayFinancialStatus": "PAID",
+                    "totalPriceSet": {
+                        "shopMoney": {
+                            "amount": "96.0",
+                            "currencyCode": "GBP"
+                        }
+                    },
+                    "customer": {
+                        "id": "gid://shopify/Customer/{CUSTOMER-ID}",
+                        "displayName": "Antonio Paez"
+                    }
+                }
+                // otros pedidos...
+            ]
+        }
+    }
+}
