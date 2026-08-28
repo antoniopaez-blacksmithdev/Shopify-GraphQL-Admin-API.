@@ -1,0 +1,75 @@
+# Español 🇪🇸
+
+# QUÉ HACE A NIVEL GLOBAL:
+# Busca un producto por su GID y recorre hasta cinco recursos multimedia asociados.
+# Devuelve metadatos comunes para todos los medios y, mediante un fragmento inline,
+# los datos específicos de la imagen cuando el recurso es un MediaImage.
+
+query ProductMedia($productId: ID!) {
+  # Punto de entrada para obtener un producto concreto.
+  product(id: $productId) {
+    # Identificador global del producto solicitado.
+    id
+    # Título visible del producto.
+    title
+    # Conexión paginada con los primeros cinco medios del producto.
+    media(first: 5) {
+      # `nodes` contiene directamente cada recurso multimedia.
+      nodes {
+        # Tipo común del medio, como IMAGE, VIDEO o MODEL_3D.
+        mediaContentType
+        # Texto alternativo común del medio, si fue definido.
+        alt
+        # Fragmento que selecciona campos solo cuando el tipo concreto es MediaImage.
+        ... on MediaImage {
+          # Datos procesados de la imagen, disponibles cuando Shopify terminó su procesamiento.
+          image {
+            # URL CDN de la imagen procesada.
+            url
+            # Texto alternativo específico de la imagen.
+            altText
+          }
+        }
+      }
+    }
+  }
+}
+
+# ---
+
+# English 🏴󠁧󠁢󠁥󠁮󠁧󠁿
+
+# WHAT IT DOES AT A GLOBAL LEVEL:
+# Looks up one product by its GID and walks through up to five associated media resources.
+# Returns fields shared by all media and, through an inline fragment,
+# image-specific data when the resource is a MediaImage.
+
+query ProductMedia($productId: ID!) {
+  # Entry point for retrieving one specific product.
+  product(id: $productId) {
+    # Global identifier of the requested product.
+    id
+    # Product title displayed to customers and merchants.
+    title
+    # Paginated connection containing the product’s first five media resources.
+    media(first: 5) {
+      # `nodes` directly contains each media resource.
+      nodes {
+        # Media type shared by the interface, such as IMAGE, VIDEO, or MODEL_3D.
+        mediaContentType
+        # Common alternative text for the media, when defined.
+        alt
+        # Fragment that selects fields only when the concrete type is MediaImage.
+        ... on MediaImage {
+          # Processed image data, available after Shopify finishes processing it.
+          image {
+            # CDN URL of the processed image.
+            url
+            # Image-specific alternative text.
+            altText
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+    "data": {
+        "product": {
+            "id": "gid://shopify/Product/{PRODUCT_ID}",
+            "title": "PRODUCT NAME",
+            "media": {
+                "nodes": [
+                    {
+                        "mediaContentType": "IMAGE",
+                        "alt": "",
+                        "image": {
+                            "url": "https://cdn.shopify.com/s/files/...",
+                            "altText": ""
+                        }
+                    }
+                    // resto de imágenes si las hay...
+                ]
+            }
+        }
+    }
+}
