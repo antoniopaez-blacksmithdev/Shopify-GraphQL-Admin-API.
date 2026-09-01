@@ -1,0 +1,37 @@
+# Español 🇪🇸
+
+# QUÉ HACE A NIVEL GLOBAL:
+# Lee tres datos de identidad y configuración de la tienda actual.
+# No recibe variables y no crea ni modifica ningún recurso.
+
+query ShopConfiguration {
+  # Campo raíz que devuelve la tienda asociada al token de acceso.
+  shop {
+    # Nombre que Shopify muestra para la tienda.
+    name
+    # Dominio permanente con formato tienda.myshopify.com.
+    myshopifyDomain
+    # Moneda base usada por la tienda para sus importes principales.
+    currencyCode
+  }
+}
+
+# ---
+
+# English 🏴󠁧󠁢󠁥󠁮󠁧󠁿
+
+# WHAT IT DOES AT A GLOBAL LEVEL:
+# Reads three identity and configuration values for the current shop.
+# It uses no variables and creates or changes no resource.
+
+query ShopConfiguration {
+  # Root field that returns the shop associated with the access token.
+  shop {
+    # Name displayed by Shopify for the shop.
+    name
+    # Permanent domain in the tienda.myshopify.com format.
+    myshopifyDomain
+    # Base currency used by the shop for its primary amounts.
+    currencyCode
+  }
+}

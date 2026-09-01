@@ -1,0 +1,9 @@
+{
+    "data": {
+        "shop": {
+            "name": "ironforgecode",
+            "myshopifyDomain": "ironforgecode.myshopify.com",
+            "currencyCode": "GBP"
+        }
+    }
+}
