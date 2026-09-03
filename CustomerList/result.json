@@ -1,0 +1,19 @@
+{
+    "data": {
+        "customers": {
+            "nodes": [
+                {
+                    "id": "gid://shopify/Customer/{CUSTOMER-ID}",
+                    "firstName": "Antonio",
+                    "lastName": "Paez",
+                    "defaultEmailAddress": {
+                        "emailAddress": "antonio.paez@ironforgecode.com"
+                    },
+                    "state": "DISABLED",
+                    "numberOfOrders": "1"
+                }
+                // resto de clientes...
+            ]
+        }
+    }
+}

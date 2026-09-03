@@ -1,0 +1,59 @@
+# Español 🇪🇸
+
+# QUÉ HACE A NIVEL GLOBAL:
+# Obtiene los cinco primeros clientes y resume su contacto y actividad.
+# La conexión es paginada; para más resultados hay que usar cursores.
+
+query CustomerList {
+  # Conexión raíz de clientes; `first` limita esta página a cinco nodos.
+  customers(first: 5) {
+    # `nodes` devuelve los clientes directamente sin exponer edges.
+    nodes {
+      # Identificador global del cliente.
+      id
+      # Nombre y apellido guardados en la cuenta.
+      firstName
+      lastName
+      # Objeto con la dirección de correo predeterminada.
+      defaultEmailAddress {
+        # Correo electrónico principal del cliente.
+        emailAddress
+      }
+      # Estado de la cuenta de cliente.
+      state
+      # Número de pedidos vinculados a este cliente.
+      numberOfOrders
+    }
+  }
+}
+
+# ---
+
+# English 🏴󠁧󠁢󠁥󠁮󠁧󠁿
+
+# WHAT IT DOES AT A GLOBAL LEVEL:
+# Retrieves the first five customers and summarises contact and activity.
+# The connection is paginated; more results require cursors.
+
+query CustomerList {
+  # Root customer connection; `first` limits this page to five nodes.
+  customers(first: 5) {
+    # `nodes` returns customers directly without exposing edges.
+    nodes {
+      # Customer global identifier.
+      id
+      # First and last names stored on the account.
+      firstName
+      lastName
+      # Object containing the default email address.
+      defaultEmailAddress {
+        # Customer's primary email address.
+        emailAddress
+      }
+      # Customer account state.
+      state
+      # Number of orders linked to this customer.
+      numberOfOrders
+    }
+  }
+}
