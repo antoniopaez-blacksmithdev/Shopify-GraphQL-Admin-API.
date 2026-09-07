@@ -1,0 +1,18 @@
+{
+    "data": {
+        "locations": {
+            "nodes": [
+                {
+                    "id": "gid://shopify/Location/{LOCATION_ID}",
+                    "name": "Shop location",
+                    "address": {
+                        "address1": "ADDRESS",
+                        "city": "CITY",
+                        "countryCode": "COUNTRY CODE",
+                        "zip": "POSTAL CODE"
+                    }
+                }
+            ]
+        }
+    }
+}

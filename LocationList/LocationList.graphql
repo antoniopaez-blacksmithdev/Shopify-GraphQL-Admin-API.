@@ -1,0 +1,61 @@
+# Español 🇪🇸
+
+# QUÉ HACE A NIVEL GLOBAL:
+# Recupera cinco ubicaciones y los datos mínimos para identificarlas.
+# Es una lectura paginada y no cambia la configuración logística.
+
+query LocationList {
+  # Conexión de ubicaciones; `first` limita la página devuelta.
+  locations(first: 5) {
+    # Lista directa de objetos Location.
+    nodes {
+      # Identificador global de la ubicación.
+      id
+      # Nombre administrativo de la ubicación.
+      name
+      # Dirección postal estructurada.
+      address {
+        # Primera línea de la dirección.
+        address1
+        # Ciudad de la ubicación.
+        city
+        # Código ISO del país.
+        countryCode
+        # Código postal.
+        zip
+      }
+    }
+  }
+}
+
+# ---
+
+# English 🏴󠁧󠁢󠁥󠁮󠁧󠁿
+
+# WHAT IT DOES AT A GLOBAL LEVEL:
+# Retrieves five locations and the minimum data needed to identify them.
+# It is a paginated read and does not change logistics configuration.
+
+query LocationList {
+  # Location connection; `first` limits the returned page.
+  locations(first: 5) {
+    # Direct list of Location objects.
+    nodes {
+      # Location global identifier.
+      id
+      # Administrative name of the location.
+      name
+      # Structured postal address.
+      address {
+        # First address line.
+        address1
+        # Location city.
+        city
+        # ISO country code.
+        countryCode
+        # Postal code.
+        zip
+      }
+    }
+  }
+}
