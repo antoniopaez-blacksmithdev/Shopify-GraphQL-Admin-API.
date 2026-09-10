@@ -1,0 +1,20 @@
+{
+    "data": {
+        "draftOrders": {
+            "nodes": [
+                {
+                    "id": "gid://shopify/DraftOrder/{DRAFT_ORDER_ID}",
+                    "name": "#D2",
+                    "status": "OPEN",
+                    "totalPriceSet": {
+                        "shopMoney": {
+                            "amount": "384.0",
+                            "currencyCode": "GBP"
+                        }
+                    }
+                }
+                // resto de pedidos en draft...
+            ]
+        }
+    }
+}

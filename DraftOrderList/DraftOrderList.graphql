@@ -1,0 +1,63 @@
+# Español 🇪🇸
+
+# QUÉ HACE A NIVEL GLOBAL:
+# Lee cinco borradores y muestra su estado y total en moneda de la tienda.
+# La consulta no envía facturas, completa borradores ni crea pedidos.
+
+query DraftOrderList {
+  # Conexión paginada de borradores de pedido.
+  draftOrders(first: 5) {
+    # Cada nodo es un DraftOrder independiente.
+    nodes {
+      # Identificador global del borrador.
+      id
+      # Nombre visible, normalmente con formato #D...
+      name
+      # Estado del flujo del borrador.
+      status
+      # Conjunto de importes del pedido.
+      totalPriceSet {
+        # Importe normalizado a la moneda de la tienda.
+        shopMoney {
+          # Valor decimal del total.
+          amount
+          # Código ISO de la moneda.
+          currencyCode
+        }
+      }
+    }
+  }
+}
+
+# ---
+
+# English 🏴󠁧󠁢󠁥󠁮󠁧󠁿
+
+# WHAT IT DOES AT A GLOBAL LEVEL:
+# Reads five drafts and shows their status and total in shop currency.
+# The query sends no invoices, completes no drafts, and creates no orders.
+
+query DraftOrderList {
+  # Paginated draft order connection.
+  draftOrders(first: 5) {
+    # Each node is an independent DraftOrder.
+    nodes {
+      # Draft global identifier.
+      id
+      # Display name, usually in the #D... format.
+      name
+      # Draft workflow status.
+      status
+      # Set of order amounts.
+      totalPriceSet {
+        # Amount normalised to shop currency.
+        shopMoney {
+          # Decimal total value.
+          amount
+          # ISO currency code.
+          currencyCode
+        }
+      }
+    }
+  }
+}
