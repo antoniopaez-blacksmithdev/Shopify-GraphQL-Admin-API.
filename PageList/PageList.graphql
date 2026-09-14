@@ -1,0 +1,47 @@
+# Español 🇪🇸
+
+# QUÉ HACE A NIVEL GLOBAL:
+# Recupera las cinco primeras páginas y sus datos editoriales esenciales.
+# La conexión permite paginar; la consulta es completamente de solo lectura.
+
+query PageList {
+  # Conexión de páginas del canal online.
+  pages(first: 5) {
+    # `nodes` contiene directamente las páginas devueltas.
+    nodes {
+      # Identificador global de la página.
+      id
+      # Título visible para comerciantes y clientes.
+      title
+      # Segmento legible de la URL.
+      handle
+      # Extracto textual generado a partir del cuerpo.
+      bodySummary
+    }
+  }
+}
+
+# ---
+
+# English 🏴󠁧󠁢󠁥󠁮󠁧󠁿
+
+# WHAT IT DOES AT A GLOBAL LEVEL:
+# Retrieves the first five pages and their essential editorial data.
+# The connection supports pagination; the query is entirely read-only.
+
+query PageList {
+  # Online store page connection.
+  pages(first: 5) {
+    # `nodes` directly contains the returned pages.
+    nodes {
+      # Page global identifier.
+      id
+      # Title shown to merchants and customers.
+      title
+      # Human-readable URL segment.
+      handle
+      # Text excerpt generated from the body.
+      bodySummary
+    }
+  }
+}

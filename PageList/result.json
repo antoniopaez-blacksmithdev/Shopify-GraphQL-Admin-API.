@@ -1,0 +1,21 @@
+{
+    "data": {
+        "pages": {
+            "nodes": [
+                {
+                    "id": "gid://shopify/Page/{PAGE_ID}",
+                    "title": "Contact",
+                    "handle": "contact",
+                    "bodySummary": ""
+                },
+                {
+                    "id": "gid://shopify/Page/{PAGE_ID}",
+                    "title": "Your Privacy Choices",
+                    "handle": "data-sharing-opt-out",
+                    "bodySummary": "As described in our Privacy Policy, we collect personal information from your interactions with us and our website, including through cookies and s..."
+                }
+                // resto de páginas...
+            ]
+        }
+    }
+}
