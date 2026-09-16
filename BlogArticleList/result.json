@@ -1,0 +1,24 @@
+{
+    "data": {
+        "blogs": {
+            "nodes": [
+                {
+                    "id": "gid://shopify/Blog/{BLOG_ID}",
+                    "title": "News",
+                    "handle": "news",
+                    "articles": {
+                        "nodes": [
+                            {
+                                "id": "gid://shopify/Article/{ARTICLE_ID}",
+                                "title": "prueba",
+                                "handle": "prueba"
+                            }
+                            // resto de artículos del blog...
+                        ]
+                    }
+                }
+                // resto de blogs...
+            ]
+        }
+    }
+}

@@ -1,0 +1,63 @@
+# Español 🇪🇸
+
+# QUÉ HACE A NIVEL GLOBAL:
+# Obtiene cinco blogs y hasta cinco artículos dentro de cada blog.
+# La consulta solamente lee títulos y handles, sin publicar ni modificar contenido.
+
+query BlogArticleList {
+  # Primera conexión: blogs disponibles en la tienda.
+  blogs(first: 5) {
+    nodes {
+      # Identificador global del blog.
+      id
+      # Título editorial del blog.
+      title
+      # Handle usado en su URL.
+      handle
+      # Segunda conexión: primeros cinco artículos del blog actual.
+      articles(first: 5) {
+        nodes {
+          # Identificador global del artículo.
+          id
+          # Título visible del artículo.
+          title
+          # Handle usado en la URL del artículo.
+          handle
+        }
+      }
+    }
+  }
+}
+
+# ---
+
+# English 🏴󠁧󠁢󠁥󠁮󠁧󠁿
+
+# WHAT IT DOES AT A GLOBAL LEVEL:
+# Retrieves five blogs and up to five articles inside each blog.
+# It only reads titles and handles; it publishes and changes no content.
+
+query BlogArticleList {
+  # First connection: blogs available in the shop.
+  blogs(first: 5) {
+    nodes {
+      # Blog global identifier.
+      id
+      # Editorial blog title.
+      title
+      # Handle used in its URL.
+      handle
+      # Second connection: first five articles in the current blog.
+      articles(first: 5) {
+        nodes {
+          # Article global identifier.
+          id
+          # Article title shown to readers.
+          title
+          # Handle used in the article URL.
+          handle
+        }
+      }
+    }
+  }
+}
