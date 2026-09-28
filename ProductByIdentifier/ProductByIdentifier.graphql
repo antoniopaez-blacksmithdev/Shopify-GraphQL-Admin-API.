@@ -1,0 +1,37 @@
+# Español 🇪🇸
+
+# QUÉ HACE A NIVEL GLOBAL:
+# Busca un único producto usando su handle en lugar de su GID.
+# Devuelve identidad, título y URL lógica, sin modificar el producto.
+
+query ProductByIdentifier($handle: String!) {
+  # Entrada que acepta ProductIdentifierInput.
+  productByIdentifier(identifier: {handle: $handle}) {
+    # Identificador global del producto encontrado.
+    id
+    # Título visible del producto.
+    title
+    # Handle confirmado por Shopify.
+    handle
+  }
+}
+
+# ---
+
+# English 🏴󠁧󠁢󠁥󠁮󠁧󠁿
+
+# WHAT IT DOES AT A GLOBAL LEVEL:
+# Finds one product by its handle instead of its GID.
+# It returns identity, title, and logical URL data without changing the product.
+
+query ProductByIdentifier($handle: String!) {
+  # Entry point accepting ProductIdentifierInput.
+  productByIdentifier(identifier: {handle: $handle}) {
+    # Global identifier of the product found.
+    id
+    # Product title displayed to users.
+    title
+    # Handle confirmed by Shopify.
+    handle
+  }
+}
